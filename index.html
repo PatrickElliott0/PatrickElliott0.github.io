@@ -1,1 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Personal website and portfolio hosted on GitHub Pages." />
+  <meta property="og:title" content="Your Name — Portfolio" />
+  <meta property="og:description" content="Personal website and portfolio hosted on GitHub Pages." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <style>
+    /* --------- Base + Theme --------- */
+    :root {
+      --bg: #0b1020;
+      --panel: #0f152e;
+      --text: #e6e6ea;
+      --muted: #aab0c0;
+      --accent: #0ea5e9;
+      --ring: rgba(14,165,233,.35);
+      --shadow: 0 10px 30px rgba(2,8,23,.35);
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7fafc;
+        --panel: #ffffff;
+        --text: #0b1020;
+        --muted: #475569;
+        --accent: #0284c7;
+        --ring: rgba(2,132,199,.25);
+        --shadow: 0 10px 30px rgba(2,8,23,.08);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text); background: radial-gradient(1200px 600px at 10% -10%, rgba(14,165,233,.12), transparent),
+               radial-gradient(1200px 600px at 110% 10%, rgba(192,132,252,.10), transparent), var(--bg);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* --------- Layout --------- */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    header { position: sticky; top: 0; backdrop-filter: saturate(120%) blur(10px); background: color-mix(in oklab, var(--bg) 70%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--text) 15%, transparent); z-index: 40; }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: flex; gap: .6rem; align-items: center; font-weight: 700; letter-spacing: .2px; }
+    .logo { width: 28px; height: 28px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), #c084fc); box-shadow: var(--shadow); }
+    .nav a { margin-left: 22px; color: var(--text); opacity: .85; }
+    .nav a:hover { opacity: 1; }
+
+    .hero { padding: 72px 0 36px; display: grid; grid-template-columns: 1.15fr .85fr; gap: 36px; align-items: center; }
+    .hero h1 { font-size: clamp(2.2rem, 4vw, 3rem); line-height: 1.1; margin: 0 0 14px; }
+    .lead { color: var(--muted); margin: 0 0 22px; }
+    .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1rem; border-radius: 14px; border: 1px solid color-mix(in oklab, var(--text) 14%, transparent); box-shadow: var(--shadow); background: var(--panel); color: var(--text); }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), #60a5fa); color: white; border: none; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { background: var(--panel); border: 1px solid color-mix(in oklab, var(--text) 12%, transparent); border-radius: 16px; padding: 18px; box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(2,8,23,.35); }
+    .card h3 { margin: 8px 0 8px; font-size: 1.05rem; }
+    .pill { display: inline-block; padding: .25rem .6rem; border-radius: 999px; background: color-mix(in oklab, var(--accent) 20%, transparent); color: color-mix(in oklab, var(--text) 85%, white); font-size: .8rem; }
+
+    section { padding: 48px 0; }
+    .section-title { font-size: clamp(1.4rem, 2.5vw, 1.8rem); margin: 0 0 18px; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .panel { background: var(--panel); border: 1px solid color-mix(in oklab, var(--text) 12%, transparent); border-radius: 16px; padding: 20px; box-shadow: var(--shadow); }
+
+    footer { padding: 36px 0 60px; color: var(--muted); text-align: center; }
+
+    /* --------- Responsive --------- */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .card-grid { grid-template-columns: 1fr 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav a { margin-left: 14px; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand"><span class="logo" aria-hidden="true"></span> <span>Your Name</span></div>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Hi, I’m <span style="color:var(--accent)">Your Name</span>.</h1>
+        <p class="lead">I build clean, fast websites and data-driven apps. Here are a few things I’ve been working on.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">See Projects</a>
+          <a class="btn" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+      <div class="panel">
+        <strong>Highlights</strong>
+        <ul>
+          <li>⚡ Focus on performance & accessibility</li>
+          <li>🧩 Modern JS/TS, Python, and APIs</li>
+          <li>🔒 Security-minded; tests and CI</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="card-grid">
+        <article class="card">
+          <span class="pill">Web</span>
+          <h3>Project One</h3>
+          <p>A short description of what this project does, the stack you used, and the impact/results.</p>
+          <p><a href="#">Live Demo</a> · <a href="#">Source</a></p>
+        </article>
+        <article class="card">
+          <span class="pill">Data</span>
+          <h3>Project Two</h3>
+          <p>Another concise blurb. Mention metrics if you can (e.g., “reduced build time by 30%”).</p>
+          <p><a href="#">Case Study</a></p>
+        </article>
+        <article class="card">
+          <span class="pill">Open Source</span>
+          <h3>Project Three</h3>
+          <p>Explain your contribution and why it matters. Link to a repo or issue/PR.</p>
+          <p><a href="#">Repository</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="two-col">
+      <div class="panel">
+        <h2 class="section-title">About</h2>
+        <p>Write a few sentences about who you are, what you do, and what you’re interested in. Keep it friendly and specific. Mention technologies you like, domains you care about, or problems you’re excited to solve.</p>
+      </div>
+      <div class="panel">
+        <h2 class="section-title">Skills</h2>
+        <ul>
+          <li>JavaScript / TypeScript · React · Node</li>
+          <li>Python · Data analysis · FastAPI</li>
+          <li>HTML · CSS · Accessibility (WCAG)</li>
+          <li>CI/CD · GitHub Actions · Testing</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="two-col">
+      <div class="panel">
+        <h2 class="section-title">Contact</h2>
+        <p>Email: <a href="mailto:you@example.com">you@example.com</a><br>
+           GitHub: <a href="https://github.com/your-username" target="_blank" rel="noreferrer">@your-username</a><br>
+           LinkedIn: <a href="https://www.linkedin.com/in/your-handle/" target="_blank" rel="noreferrer">linkedin.com/in/your-handle</a></p>
+      </div>
+      <div class="panel">
+        <h2 class="section-title">Now</h2>
+        <p>Share what you’re currently learning, building, or reading. This keeps the site feeling alive.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="y"></span> Your Name. Built with ♥ and hosted on GitHub Pages.
+    </div>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Smooth scroll for same-page anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+</body>
+</html>
 
